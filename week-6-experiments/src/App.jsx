@@ -6,7 +6,18 @@ function App() {
 
   return(
     <div>
-      <CardWrapper innerComponent={<TextComponent/>}/>
+      <CardWrapper>
+        hi there,this is 1st children of cardwrapper
+      </CardWrapper>
+      <CardWrapper>
+        hi there,this is 2nd children of cardwrapper
+      </CardWrapper>
+      <CardWrapper>
+        hi there,this is 3rd children of cardwrapper
+      </CardWrapper>
+      <CardWrapper>
+        hi there,this is 4th children of cardwrapper
+      </CardWrapper>
 
     </div>
   )
@@ -14,19 +25,12 @@ function App() {
   
 }
 
-function TextComponent(){
-  return(
-    <div>
-      Hi this is text component
-    </div>
-  )
 
-}
 
-function CardWrapper({innerComponent}){
+function CardWrapper({children}){
 
 return(
-  <div style={{border: "2px solid black"}}>{innerComponent}</div>
+  <div style={{border: "2px solid black"}}>{children}</div>
 );
 }
 export default App;
