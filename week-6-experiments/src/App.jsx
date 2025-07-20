@@ -4,44 +4,29 @@ let counter = 4;
 
 function App() {
 
-  let [todos,setTodos] = useState([{
-    id: 1,
-    title: "go to gym",
-    description:"at 6pm"
-  },{
-    id: 2,
-    title: "make dinner",
-    description:"at 8 pm"
-  },{
-    id:3,
-    title: "practice DSA",
-    description:"from 10 pm"
-  }]);
-
-
-
-  function addTodo(){
-    setTodos([...todos,{
-      id: counter++,
-      title: Math.random(),
-      description:Math.random()
-    }]);
-  }
-  return (
+  return(
     <div>
-      <button onClick={addTodo}>Add a new todo</button>
-      {todos.map(todo => <Todo key = {todo.id} title={todo.title} description={todo.description}></Todo>)}
+      <CardWrapper innerComponent={<TextComponent/>}/>
+
     </div>
-  );
+  )
+
+  
 }
 
-function Todo({title,description}){
+function TextComponent(){
+  return(
+    <div>
+      Hi this is text component
+    </div>
+  )
+
+}
+
+function CardWrapper({innerComponent}){
 
 return(
-  <div>
-    <h1> {title}</h1>
-    <h3>{description}</h3>
-  </div>
-)
+  <div style={{border: "2px solid black"}}>{innerComponent}</div>
+);
 }
 export default App;
