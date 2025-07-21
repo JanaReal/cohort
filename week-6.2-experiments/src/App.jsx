@@ -1,41 +1,31 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect, useMemo } from "react";
 
-function App(){
-  let [id,setId] = useState(1);
+function App() {
+  //let [id, setId] = useState(1);
+  let [inputVal, setInputVal] = useState(0);
+  let [counter, setCounter] = useState(0);
+
+  let sum = useMemo(()=> {
+
+    let finalSum = 0;
+    for(let i = 1; i <= inputVal; i++){
+      finalSum+=i;
+    }
+  return finalSum;
+
+  },[inputVal]);
 
   
 
-
-
   return (
     <div>
-      <button onClick={()=> setId(1)}> 1 </button>
-      <button onClick={()=> setId(2)}> 2 </button>
-      <button onClick={()=> setId(3)}> 3 </button>
-      <button onClick={()=> setId(4)}> 4 </button>
-      <Todo id = {id}/>;
+      <input onChange={(e)=> setInputVal(e.target.value)}></input>
+      <br/>
+      Sum from 1 to {inputVal} is {sum}
+      <br/>
+      <button onClick={() => setCounter(counter + 1)}>Counter {counter}</button>
     </div>
-  )
+  );
 }
 
-function Todo({id}){
-
-  let [todos,setTodos] = useState(0);
-
-  useEffect(()=>{
-    fetch(`https://sum-server.100xdevs.com/todo?id=${id}`)
-      .then(async function(res){
-        let json = await res.json();
-        setTodos(json.todos)
-      })
-  },[])
-
-  return(
-    <div>
-      <h1>{todos.title}</h1>
-      <h4>{todos.description}</h4>
-    </div>
-  )
-}
-
-export default App
+export default App;
