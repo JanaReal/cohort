@@ -4,16 +4,25 @@ function App() {
   //let [id, setId] = useState(1);
   let [inputVal, setInputVal] = useState(0);
   let [counter, setCounter] = useState(0);
+  let [sum,setSum] = useState(0);
 
-  let sum = useMemo(()=> {
+  // let sum = useMemo(()=> {
 
-    let finalSum = 0;
-    for(let i = 1; i <= inputVal; i++){
-      finalSum+=i;
+  //   let finalSum = 0;
+  //   for(let i = 1; i <= inputVal; i++){
+  //     finalSum+=i;
+  //   }
+  // return finalSum;
+
+  // },[inputVal]);
+
+  useEffect(()=>{
+    let sum = 0;
+    for(let i = 0; i <= inputVal; i++ ){
+      sum+=i;
     }
-  return finalSum;
-
-  },[inputVal]);
+    setSum(sum)
+  },[inputVal])
 
   
 
