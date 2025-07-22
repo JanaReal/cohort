@@ -1,36 +1,53 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState ,useMemo,memo,useCallback} from 'react'
 
 function App() {
-  const [exchangeData, setExchangeData] = useState({});
+  const [exchange1Data, setExchange1Data] = useState({});
+  const [exchange2Data, setExchange2Data] = useState({});
   const [bankData, setBankData] = useState({});
-  console.log("rerender")
 
-    // Assume it is { income: 100 }
+  useEffect(() => {
+    // Some operation to get the data
+    setExchange1Data({
+      returns: 100
+    });
+  }, [])
 
-  useEffect(()=>{
+  useEffect(() => {
+    // Some operation to get the data
+    setExchange2Data({
+      returns: 100
+    });
+  }, [])
+
+  useEffect(() => {
+    // Some operation to get the data
     setTimeout(() => {
-      setBankData({income:100});
-    }, 3000);
-
-    setTimeout(() => {
-      setExchangeData({
-        returns: 100
+      setBankData({
+        income: 100
       });
-    }, 1000);
-  },[]);
-
-
- 
-
+    },5000)
+  }, [])
   
-
-  const incomeTax = (bankData.income + exchangeData) * 0.3;
+  const calculateCryptoReturns = useCallback(function(){
+  
+    return exchange1Data.returns + exchange2Data.returns;
+  },[exchange1Data,exchange2Data])
+  
+ 
 
   return (
     <div>
-        hi there, your income tax returns are {incomeTax}
+        <CryptoGainsCalculator calculateCryptoReturns={calculateCryptoReturns}/>
     </div>
   )
 }
+
+const CryptoGainsCalculator = memo(function ({calculateCryptoReturns}){
+  console.log("child re-rendered");
+  return <div>
+    your crypto returns are {calculateCryptoReturns()};
+  </div>
+
+})
 
 export default App
