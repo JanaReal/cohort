@@ -1,40 +1,36 @@
-import { useState, useEffect, useMemo } from "react";
+import { useEffect, useState } from 'react'
 
 function App() {
-  //let [id, setId] = useState(1);
-  let [inputVal, setInputVal] = useState(0);
-  let [counter, setCounter] = useState(0);
-  let [sum,setSum] = useState(0);
+  const [exchangeData, setExchangeData] = useState({});
+  const [bankData, setBankData] = useState({});
+  console.log("rerender")
 
-  // let sum = useMemo(()=> {
-
-  //   let finalSum = 0;
-  //   for(let i = 1; i <= inputVal; i++){
-  //     finalSum+=i;
-  //   }
-  // return finalSum;
-
-  // },[inputVal]);
+    // Assume it is { income: 100 }
 
   useEffect(()=>{
-    let sum = 0;
-    for(let i = 0; i <= inputVal; i++ ){
-      sum+=i;
-    }
-    setSum(sum)
-  },[inputVal])
+    setTimeout(() => {
+      setBankData({income:100});
+    }, 3000);
+
+    setTimeout(() => {
+      setExchangeData({
+        returns: 100
+      });
+    }, 1000);
+  },[]);
+
+
+ 
 
   
 
+  const incomeTax = (bankData.income + exchangeData) * 0.3;
+
   return (
     <div>
-      <input onChange={(e)=> setInputVal(e.target.value)}></input>
-      <br/>
-      Sum from 1 to {inputVal} is {sum}
-      <br/>
-      <button onClick={() => setCounter(counter + 1)}>Counter {counter}</button>
+        hi there, your income tax returns are {incomeTax}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
