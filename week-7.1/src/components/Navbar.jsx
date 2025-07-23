@@ -1,15 +1,19 @@
-export function Topbar(){
+import { useNavigate } from "react-router-dom"
+
+export default function Topbar(){
+
+    const navigate = useNavigate();
     return <div>
         <button onClick={()=>{
-            window.location.href = "/landing"
+            navigate("/landing")
         }}>Landing page</button>
 
         <button onClick={()=>{
-            window.location.href = "/dashboard"
+            navigate("/dashboard")
         }}>Dashboard page</button>
 
         <button onClick={()=>{
-            window.location.href = "/"
+            navigate("/")
         }}>Home page</button>
     </div>
 }
