@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Landing } from "./components/Landing";
-import { Dashboard } from "./components/Dashboard";
+import { lazy, Suspense } from "react";
+const Dashboard = lazy(() => import("./components/Dashboard"));
+const Landing = lazy(() => import("./components/Landing"));
 import { Topbar } from "./components/Navbar";
 
 function App() {
@@ -8,10 +9,12 @@ function App() {
     <div>
       <BrowserRouter>
         <Topbar />
-        <Routes>
-          <Route path="/landing" Component={Landing}></Route>
-          <Route path="/dashboard" Component={Dashboard}></Route>
-        </Routes>
+        <Suspense>
+          <Routes>
+            <Route path="/landing" Component={Landing}></Route>
+            <Route path="/dashboard" Component={Dashboard}></Route>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );
