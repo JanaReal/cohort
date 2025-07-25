@@ -1,0 +1,14 @@
+import { atomFamily, selectorFamily } from "recoil";
+import { TODOS } from "./todos";
+import axios from 'axios';
+
+export const todosAtomFamily = atomFamily({
+  key: 'todosAtomFamily',
+  default: selectorFamily({
+    key:"todoSelectorFamily",
+    get : (id) => async ({get}) =>{
+      const res = await axios.get(`https://jsonplaceholder.typicode.com/todos?id=${id}`);
+      return res.data.todo;
+    },
+  })
+});

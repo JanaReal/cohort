@@ -20,4 +20,17 @@ export const  notificationAtoms = atom({
     default: 0
 })
 
+export const totalNotificationSelector = selector({
+  key:" totalNotificationSelector",
+  get: ({get}) =>{
+    const networkNotificationCount = get(networkAtoms);
+    const jobNotificationCount = get(jobAtoms);
+    const messageNotificationCount = get(messageAtoms);
+    const notificationNotificationCount = get(notificationAtoms);
+    return networkNotificationCount+jobNotificationCount+messageNotificationCount+notificationNotificationCount;
+
+  }
+
+})
+
 
