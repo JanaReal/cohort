@@ -1,57 +1,33 @@
-import { RecoilRoot, useSetRecoilState, useRecoilValue } from "recoil";
-import { countAtom, isOddEvenSelector } from "./store/atoms/count";
+import { RecoilRoot, useSetRecoilState, useRecoilValue, useRecoilState } from "recoil";
+import { countAtom, inputTodoDesc, inputTodos, isOddEvenSelector } from "./store/atoms/count";
 
 function App() {
   return (
     <div>
       <RecoilRoot>
-        <Count />
+        <TodoInputs/>
       </RecoilRoot>
     </div>
   );
 }
-function Count() {
-  console.log("re-render");
-  return (
-    <div>
-      <CountRenderer />
-      <Buttons />
-      <IsEvenOdd />
-    </div>
-  );
+
+function TodoInputs(){
+
+  const [todoTitle,setTodoTitle] = useRecoilState(inputTodos); 
+  const [todoDesc,setTodoDesc] = useRecoilState(inputTodoDesc); 
+
+  return <div>
+    <input type="text" value={inputValue} onChange={(e)=> setTodoTitle(e.target.value)} placeholder="Title"/>
+    <br />
+    <input type="text" value={intputValue} onChange={(e)=>setTodoDesc(e.target.value)} placeholder="Description" />
+    <br />
+    <button onClick={onclickHandler()}>Submit</button>
+  </div>
 }
 
-function CountRenderer() {
-  const count = useRecoilValue(countAtom);
-  return <div>{count}</div>;
+function showTodos(){
+  
 }
 
-function IsEvenOdd() {
-  const isEven = useRecoilValue(isOddEvenSelector);
-  return <div>{isEven? "it is even" : "it is odd"}</div>;
-}
-
-function Buttons() {
-  const setCount = useSetRecoilState(countAtom);
-  return (
-    <div>
-      <button
-        onClick={() => {
-          setCount((count) => count + 1);
-        }}
-      >
-        Increase
-      </button>
-
-      <button
-        onClick={() => {
-          setCount((count) => count - 1);
-        }}
-      >
-        Decrease
-      </button>
-    </div>
-  );
-}
 
 export default App;
