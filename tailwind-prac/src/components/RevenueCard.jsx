@@ -39,10 +39,10 @@ export const RevenueCard = ({ title, orderCount, amount }) => {
               />
             </svg>
           </div>{" "}
-          <div>{amount} </div>{" "}
+          <div className="font-semibold text-2xl">{amount} </div>{" "}
         </div>
         {orderCount ? (
-          <div className="flex">
+          <div className="flex cursor-pointer text-blue-400 underline font-medium">
             <div className="">{orderCount} orders</div>
             <div>
               <svg
