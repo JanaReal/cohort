@@ -1,32 +1,27 @@
 import { useEffect, useState } from 'react';
-import './App.css'
 
-export default function App(){
 
-  const isOnline = useIsOnline();
-  if(isOnline) {
-    return <div>user is Online</div>
-  }
-  return <div>user offline</div>
-  
- }
+function useInterval(fn,timeout){
 
-function useIsOnline() {
-  const [isOnline, setIsOnline] = useState(window.navigator.onLine);
+    useEffect(()=>{
+      setInterval(()=>fn(),timeout);
+    },[])
+}
 
-  useEffect(()=>{
-    window.addEventListener("Online",()=>{
-      setIsOnline(true);
-    })
-    window.addEventListener("offline",()=>{
-      setIsOnline(false);
-    })
-  },[])
 
-  
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  useInterval(() => {
+    setCount(c => c + 1);
+  }, 1000)
 
   return (
-    isOnline
-  );
+    <>
+      Timer is at {count}
+    </>
+  )
 }
- 
+
+export default App
