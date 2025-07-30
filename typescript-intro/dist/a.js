@@ -1,7 +1,12 @@
 "use strict";
-function runAfter2Sec(fn) {
-    setInterval(fn, 2000);
+function isLegal(user) {
+    if (user.age > 18)
+        console.log("adult");
+    else
+        console.log("kid");
 }
-runAfter2Sec(() => {
-    console.log("hi");
+isLegal({
+    firstname: "debanjan",
+    lastname: "jana",
+    age: 15
 });

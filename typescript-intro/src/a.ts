@@ -1,9 +1,16 @@
-
-
-function runAfter2Sec(fn:()=> void){
-    setInterval(fn,2000);
+interface User{
+    firstname: string,
+    lastname: string,
+    age: number
 }
 
-runAfter2Sec(()=>{
-    console.log("hi");
+function isLegal(user : User){
+    if(user.age > 18) console.log("adult")
+    else console.log("kid") 
+}
+
+isLegal({
+    firstname:"debanjan",
+    lastname: "jana",
+    age: 15
 })
