@@ -1,11 +1,7 @@
 "use strict";
-function isLegal(a) {
-    if (a >= 18) {
-        return true;
-    }
-    else {
-        return false;
-    }
+function runAfter2Sec(fn) {
+    setInterval(fn, 2000);
 }
-let value = isLegal(12);
-console.log(value);
+runAfter2Sec(() => {
+    console.log("hi");
+});
