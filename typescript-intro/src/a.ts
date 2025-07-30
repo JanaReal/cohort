@@ -1,16 +1,19 @@
-interface User{
-    firstname: string,
-    lastname: string,
-    age: number
+type Employee = {
+    name:String,
+    startDate: Date,
 }
 
-function isLegal(user : User){
-    if(user.age > 18) console.log("adult")
-    else console.log("kid") 
+interface Manager {
+    name:string,
+    department: string,
 }
 
-isLegal({
-    firstname:"debanjan",
-    lastname: "jana",
-    age: 15
-})
+type TechLead = Employee & Manager;
+
+let teamLead: TechLead = {
+    name:"harkl",
+    startDate:new Date(),
+    department: "SDE"
+} 
+
+
