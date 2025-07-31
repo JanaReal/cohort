@@ -63,6 +63,6 @@ async function getUser(user_email:string){
 
 
 //createUserTable();
-insertUserTable(";DELETE * FROM Users;","user1@gmail.com","user1@123").catch(console.error);
+//insertUserTable(";DELETE * FROM Users;","user1@gmail.com","user1@123").catch(console.error);
 
 getUser("user1@gmail.com");
