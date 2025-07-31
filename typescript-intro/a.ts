@@ -1,11 +1,9 @@
-type KeyInput = "up" | "down" | "left" | "right";
 
-enum Direction {
-    Up,Down,Left,Right
+
+function firstEll<T>(arr: T[]){
+    return arr[0];
 }
 
-function doSomething(keyPressed: Direction){
-    //do something
-}
+console.log(firstEll(["deb","jana"]).toUpperCase());
 
-doSomething(Direction.Up);
+console.log(firstEll([1,2,3]));

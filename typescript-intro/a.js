@@ -1,12 +1,6 @@
 "use strict";
-var Direction;
-(function (Direction) {
-    Direction[Direction["Up"] = 0] = "Up";
-    Direction[Direction["Down"] = 1] = "Down";
-    Direction[Direction["Left"] = 2] = "Left";
-    Direction[Direction["Right"] = 3] = "Right";
-})(Direction || (Direction = {}));
-function doSomething(keyPressed) {
-    //do something
+function firstEll(arr) {
+    return arr[0];
 }
-doSomething(Direction.Up);
+console.log(firstEll(["deb", "jana"]).toUpperCase());
+console.log(firstEll([1, 2, 3]));
