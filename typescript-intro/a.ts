@@ -6,4 +6,4 @@ function firstEll<T>(arr: T[]){
 
 console.log(firstEll(["deb","jana"]).toUpperCase());
 
-console.log(firstEll([1,2,3]));
+console.log(firstEll([1,2,"3"]));  
