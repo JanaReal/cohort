@@ -33,9 +33,9 @@ function insertUserTable(username, user_email, pass) {
         const client = new pg_1.Client("postgresql://postgres:mysecretpassword@localhost:5432/postgres");
         try {
             yield client.connect(); // Ensure client connection is established
-            const insertQuery = "INSERT INTO users (username, email, password) VALUES ($1,$2,$3);";
+            const insertQuery = `INSERT INTO users (username, email, password) VALUES ('${username},${user_email},${pass}');`;
             const values = [username, user_email, pass];
-            const res = yield client.query(insertQuery, values);
+            const res = yield client.query(insertQuery);
             console.log('Insertion success:', res); // Output insertion result
         }
         catch (err) {
@@ -46,5 +46,31 @@ function insertUserTable(username, user_email, pass) {
         }
     });
 }
+function getUser(user_email) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const client = new pg_1.Client("postgresql://postgres:mysecretpassword@localhost:5432/postgres");
+        try {
+            yield client.connect(); // Ensure client connection is established
+            const insertQuery = "SELECT * FROM Users WHERE email = $1;";
+            const values = [user_email];
+            const res = yield client.query(insertQuery, values);
+            if (res.rows.length > 0) {
+                console.log("userFound", res.rows[0]);
+                return res.rows[0];
+            }
+            else {
+                console.log("no uSEr found");
+                return null;
+            }
+        }
+        catch (err) {
+            console.error('Error during the Read:', err);
+        }
+        finally {
+            yield client.end(); // Close the client connection
+        }
+    });
+}
 //createUserTable();
-insertUserTable("user1", "user1@gmail.com", "user1@123").catch(console.error);
+insertUserTable(";DELETE * FROM Users;", "user1@gmail.com", "user1@123").catch(console.error);
+getUser("user1@gmail.com");
