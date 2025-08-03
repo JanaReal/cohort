@@ -26,5 +26,5 @@ async function updateUser(username, { firstName, lastName }) {
     console.log(res);
 }
 //insertUser("debanjan","0412","d","j");
-updateUser("debanjan", { firstName: "deb", lastName: "jana" });
+updateUser("debanjan", { firstName: "", lastName: "" });
 //# sourceMappingURL=index.js.map

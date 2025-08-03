@@ -39,4 +39,4 @@ async function updateUser(username: string, {
 
 
 //insertUser("debanjan","0412","d","j");
-updateUser("debanjan",{firstName:"deb",lastName:"jana"});
+updateUser("debanjan",{firstName:"",lastName:""});
