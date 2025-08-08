@@ -8,3 +8,11 @@ interface User{
 
 type UpdatedProps = Pick<User, 'name'| 'email'| 'password'>
 
+type UpdatedPropsOptional = Partial<UpdatedProps>;
+
+function updateProps(UpdatedPropsOptional:UpdatedPropsOptional){
+    
+}
+updateProps({
+    name:"deb"
+});
