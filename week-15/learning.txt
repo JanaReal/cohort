@@ -1,0 +1,1 @@
+learned docker compose, exec,push,etc.
